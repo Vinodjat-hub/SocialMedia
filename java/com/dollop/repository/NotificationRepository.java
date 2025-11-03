@@ -1,0 +1,15 @@
+package com.dollop.repository;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.dollop.entity.Notification;
+
+public interface NotificationRepository extends JpaRepository<Notification, Long> {
+	List<Notification> findByUserIdOrderByCreatedAtDesc(Long userId);
+
+	void deleteByUserId(Long userId);
+
+	Long countByUserIdAndSeenFalse(Long userId);
+}
